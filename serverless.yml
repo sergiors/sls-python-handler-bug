@@ -1,0 +1,20 @@
+service: myservice
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+
+functions:
+  hello:
+    handler: users.http.hello.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+
+plugins:
+  - serverless-offline
+
